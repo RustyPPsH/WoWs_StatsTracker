@@ -19,6 +19,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  http: ^0.13.5
+  url_launcher: ^6.1.10
+  flutter_linkify: ^5.0.2
+  textfield_search: ^0.10.0
+  easy_search_bar: ^2.4.2
 
 dev_dependencies:
   flutter_test:
