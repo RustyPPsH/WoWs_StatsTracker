@@ -6,24 +6,33 @@ import 'search_player.dart';
 //Will only scan for NA servers for now
 //const applicationId = '65058cfc61fd13d0b31c9575c30e97b2';
 
+//class API {
+//  static Future getSearchList(search) async {
+//    var playerNickname;
+//    var searchRequest =
+//        'https://api.worldofwarships.com/wows/account/list/?application_id=65058cfc61fd13d0b31c9575c30e97b2&search=' +
+//            playerNickname +
+//            '&limit=5';
+//    return await http.get(Uri.parse(searchRequest));
+// }
+//}
+const baseUrl =
+    'https://api.worldofwarships.com/wows/account/list/?application_id=65058cfc61fd13d0b31c9575c30e97b2&search=';
+
 class API {
-  static Future getSearchList(search) async {
-    var playerNickname;
-    var searchRequest =
-        'https://api.worldofwarships.com/wows/account/list/?application_id=65058cfc61fd13d0b31c9575c30e97b2&search=' +
-            playerNickname +
-            '&limit=5';
-    return await http.get(Uri.parse(searchRequest));
+  static Future getPlayerList(search) async {
+    var url = baseUrl + search + '&limit=5';
+    return await http.get(Uri.parse(url));
   }
 }
 
-class PlayerList {
-  String nickname;
-  int accountId;
+class Player {
+  String playerName;
+  int playerId;
 
-  PlayerList(this.nickname, this.accountId);
+  Player(this.playerId, this.playerName);
 
-  PlayerList.fromJson(Map json)
-      : nickname = json["data"]["nickname"],
-        accountId = json["data"]["account_id"];
+  Player.fromJson(Map json)
+      : playerName = json['data']['nickname'],
+        playerId = json['data']['account_id'];
 }

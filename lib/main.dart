@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: colorCustom,
       ),
-      home: RootPage(),
+      home: const RootPage(),
     );
   }
 }
@@ -47,7 +47,7 @@ class RootPage extends StatefulWidget {
 
 class _RootPageState extends State<RootPage> {
   int currentPage = 0;
-  List<Widget> pages = const [SearchPlayer(), AboutPage()];
+  List<Widget> pages = const [SearchPlayer(), PlayerStatsPage(), AboutPage()];
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +60,7 @@ class _RootPageState extends State<RootPage> {
         destinations: const [
           NavigationDestination(
               icon: Icon(Icons.search), label: 'Search Player'),
+          NavigationDestination(icon: Icon(Icons.bar_chart), label: 'Stats'),
           NavigationDestination(
               icon: Icon(Icons.question_mark), label: 'About'),
         ],
